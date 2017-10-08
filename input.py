@@ -17,4 +17,4 @@ def read_test_cases():
     for _ in range(n):
         test_cases.append(read_matrix())
 
-    return n, test_cases
+    return test_cases
