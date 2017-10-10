@@ -1,10 +1,10 @@
-MATRIX_ROW = 4
+MATRIX_SIZE = 4
 
 
 def read_matrix():
     matrix = []
 
-    for _ in range(MATRIX_ROW):
+    for _ in range(MATRIX_SIZE):
         matrix.append([int(x) for x in input().split()])
 
     return matrix
