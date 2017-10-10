@@ -24,7 +24,7 @@ def main():
         start = time.time()
         count = -1
         answer = "This puzzle is not solvable."
-        queue = PriorityQueue()
+        queue = PriorityQueue() # TODO: Change this to not be a queue
         visited = set()
         found = False
 
@@ -43,14 +43,7 @@ def main():
 
             permutations = calculate_permutations(matrix)
 
-            for permutation, letter in permutations:
-                if permutation not in visited:
-                    heuristic_cost = calculate_heuristic(permutation)
-                    visited.add(permutation)
-                    queue.put((heuristic_cost+cost,
-                               permutation,
-                               current_answer + letter
-                               ))
+            # TODO
 
         print(time.time() - start, answer)
 
