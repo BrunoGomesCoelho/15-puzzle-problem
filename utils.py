@@ -21,4 +21,9 @@ def calculate_permutations(matrix):
 
 
 def check_answer(matrix):
-    pass
+    answer = True
+    for i in range(MATRIX_SIZE):
+        for j in range(1, MATRIX_SIZE + 1):
+            if matrix[i][j-1] != i*MATRIX_SIZE + j and i != MATRIX_SIZE - 1 and j != MATRIX_SIZE:
+                answer = False
+    return answer
