@@ -25,7 +25,7 @@ def main():
         count = -1
         answer = "This puzzle is not solvable."
         queue = PriorityQueue()
-        visited = set()
+        visited = []
         found = False
 
         queue.put((0, test_case, ""))
@@ -46,7 +46,7 @@ def main():
             for permutation, letter in permutations:
                 if permutation not in visited:
                     heuristic_cost = calculate_heuristic(permutation)
-                    visited.add(permutation)
+                    visited.append(permutation)
                     queue.put((heuristic_cost+cost,
                                permutation,
                                current_answer + letter

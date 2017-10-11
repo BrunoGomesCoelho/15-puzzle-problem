@@ -14,7 +14,7 @@ def calculate_permutations(matrix):
 
     for i, j, letter in options:
         if 0 <= row + i < MATRIX_SIZE and 0 <= col + j < MATRIX_SIZE:
-            temp = deepcopy(matrix)  # creates a copy of the matrix so we dont change it
+            temp = deepcopy(matrix)  # creates a copy of the matrix so we dont change it in place
             temp[row][col], temp[row+i][col+j] = temp[row+i][col+j], temp[row][col]
             permutations.append((temp, letter))
 
