@@ -5,6 +5,10 @@ from input import read_test_cases, MATRIX_SIZE
 from utils import calculate_permutations, check_answer
 
 
+def tuplize(matrix):
+    return tuple([num for row in matrix for num in row])
+
+
 def calculate_heuristic(matrix):
     cost = 0
     for i in range(MATRIX_SIZE):
@@ -25,7 +29,7 @@ def main():
         start = time.time()
         answer = "This puzzle is not solvable."
         queue = PriorityQueue()
-        visited = []
+        visited = set()
 
         """
         The queue follows the order
@@ -47,9 +51,10 @@ def main():
             permutations = calculate_permutations(matrix)
 
             for permutation, letter in permutations:
-                if permutation not in visited:
+                permutation_tuple = tuplize(permutation)
+                if permutation_tuple not in visited:
                     heuristic_cost = calculate_heuristic(permutation)
-                    visited.append(permutation)
+                    visited.add(permutation_tuple)
                     queue.put((heuristic_cost+level+1,
                                level+1,
                                permutation,
