@@ -2,12 +2,7 @@ import time
 from queue import PriorityQueue
 
 from input import read_test_cases, MATRIX_SIZE
-from utils import calculate_permutations, check_answer
-
-
-def tuplize(matrix):
-    """Returns a linear version of a matrix"""
-    return tuple([num for row in matrix for num in row])
+from utils import calculate_permutations, check_answer, tuplize
 
 
 def calculate_heuristic(matrix):
