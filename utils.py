@@ -28,3 +28,8 @@ def check_answer(matrix):
             if matrix[i][j-1] != i*MATRIX_SIZE + j and (i != MATRIX_SIZE - 1 or j != MATRIX_SIZE):
                 answer = False
     return answer
+
+
+def tuplize(matrix):
+    """Returns a linear version of a matrix"""
+    return tuple([num for row in matrix for num in row])
