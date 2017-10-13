@@ -6,10 +6,14 @@ from utils import calculate_permutations, check_answer
 
 
 def tuplize(matrix):
+    """Returns a linear version of a matrix"""
     return tuple([num for row in matrix for num in row])
 
 
 def calculate_heuristic(matrix):
+    """We use the Manhattan Distance between the given piece and where it should be on the bord
+    It is a admissible heuristic.
+    """
     cost = 0
     for i in range(MATRIX_SIZE):
         for j in range(MATRIX_SIZE):
@@ -51,6 +55,7 @@ def main():
             permutations = calculate_permutations(matrix)
 
             for permutation, letter in permutations:
+                # A tuple is necessary for storing in a set since it is immutable
                 permutation_tuple = tuplize(permutation)
                 if permutation_tuple not in visited:
                     heuristic_cost = calculate_heuristic(permutation)
