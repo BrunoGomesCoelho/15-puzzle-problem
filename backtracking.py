@@ -61,7 +61,7 @@ def main():
                                current_answer + letter
                                ))
 
-        # print(time.time() - start, answer)
+        print(time.time() - start, 's')
         print(answer)
 
 
