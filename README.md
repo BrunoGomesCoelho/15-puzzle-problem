@@ -5,3 +5,7 @@
 
 Naive and A* implementation of the classic 15-puzzle in python.
 
+
+## Conclusions Report
+
+https://www.overleaf.com/11659789mgxrttzgbkpv
