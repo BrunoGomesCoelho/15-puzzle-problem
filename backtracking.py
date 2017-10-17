@@ -55,7 +55,7 @@ def main():
                 if permutation_tuple not in visited:
                     heuristic_cost = calculate_heuristic(permutation)
                     visited.add(permutation_tuple)
-                    queue.put((heuristic_cost+level+1,
+                    queue.put((heuristic_cost,
                                level+1,
                                permutation,
                                current_answer + letter
