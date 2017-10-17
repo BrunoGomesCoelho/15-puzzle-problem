@@ -6,8 +6,8 @@ from utils import calculate_permutations, check_answer, tuplize
 
 
 def calculate_heuristic(matrix):
-    """We use the Manhattan Distance between the given piece and where it should be on the bord
-    It is a admissible heuristic.
+    """We use the Manhattan Distance between the given piece and where it should be on the board
+    It is an admissible heuristic.
     """
     cost = 0
     for i in range(MATRIX_SIZE):
