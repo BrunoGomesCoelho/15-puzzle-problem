@@ -44,8 +44,7 @@ def main():
                                current_answer + letter
                                ))
 
-                    # print(time.time() - start, answer)
-    print(answer)
+        print(time.time() - start, answer)
 
 
 if __name__ == "__main__":
