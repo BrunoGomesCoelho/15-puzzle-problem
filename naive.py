@@ -1,8 +1,8 @@
 import time
 from queue import Queue
 
-from input import read_test_cases, MATRIX_SIZE
-from utils import calculate_permutations, check_answer
+from input import read_test_cases
+from utils import calculate_permutations, check_answer, tuplize
 
 
 def main():
@@ -10,7 +10,6 @@ def main():
 
     for test_case in test_cases:
         start = time.time()
-        count = -1
         answer = "This puzzle is not solvable."
         visited = set()
         queue = Queue()
@@ -19,6 +18,14 @@ def main():
 
         while not queue.empty():
             level, matrix, current_answer = queue.get()
+
+            # A tuple is necessary for storing in a set since it is immutable
+            matrix_tuple = tuplize(matrix)
+
+            if matrix_tuple not in visited:
+                visited.add(matrix_tuple)
+            else:
+                continue
 
             if level > 50:
                 break
@@ -30,13 +37,9 @@ def main():
             permutations = calculate_permutations(matrix)
 
             for permutation, letter in permutations:
-                # A tuple is necessary for storing in a set since it is immutable
                 permutation_tuple = tuplize(permutation)
                 if permutation_tuple not in visited:
-                    heuristic_cost = calculate_heuristic(permutation)
-                    visited.add(permutation_tuple)
-                    queue.put((heuristic_cost + level + 1,
-                               level + 1,
+                    queue.put((level + 1,
                                permutation,
                                current_answer + letter
                                ))
