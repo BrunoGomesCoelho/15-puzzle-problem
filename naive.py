@@ -1,8 +1,9 @@
 import time
+from sys import argv
 from queue import Queue
 
 from input import read_test_cases
-from utils import calculate_permutations, check_answer, tuplize
+from utils import calculate_permutations, check_answer, tuplize, has_answer
 
 
 def main():
@@ -13,6 +14,10 @@ def main():
         answer = "This puzzle is not solvable."
         visited = set()
         queue = Queue()
+
+        if len(argv) < 2 or argv[2].strip().to_lower() != "no_check=true":
+            if not has_answer(test_case):
+                print(time.time() - start, answer)
 
         queue.put((0, test_case, ""))
 
