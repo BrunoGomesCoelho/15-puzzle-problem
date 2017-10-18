@@ -30,6 +30,37 @@ def check_answer(matrix):
     return answer
 
 
+def count_inversions(array):
+    """Function for counting the amount of inversions in """
+    count = 0
+    size = MATRIX_SIZE*MATRIX_SIZE
+
+    for i in range(size-1):
+        for j in range(i+1, size):
+            if array[i] != 0 and array[j] != 0 and array[i] > array[j]:
+                count += 1
+
+    return count
+
+
+def has_answer(matrix):
+    """For checking if the puzzle is solvable, we used the following side as a guide:
+        http://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/
+    Resuming, the puzzle instance is solvable if
+        the blank is on an even and number of inversions is odd.
+        the blank is on an odd row and number of inversions is even.
+    """
+    zero_pos = -1
+    for i in range(MATRIX_SIZE):
+        for j in range(MATRIX_SIZE):
+            if matrix[i][j] == 0:
+                zero_pos = i
+
+    inversions = count_inversions([num for row in matrix for num in row])
+
+    return (zero_pos % 2 == 0 and inversions % 2 == 1) or (zero_pos % 2 == 1 and inversions % 2 == 0)
+
+
 def tuplize(matrix):
     """Returns a linear version of a matrix"""
     return tuple([num for row in matrix for num in row])
