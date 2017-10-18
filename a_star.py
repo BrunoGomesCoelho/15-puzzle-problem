@@ -1,8 +1,9 @@
 import time
+from sys import argv
 from queue import PriorityQueue
 
 from input import read_test_cases, MATRIX_SIZE
-from utils import calculate_permutations, check_answer, tuplize
+from utils import calculate_permutations, check_answer, has_answer, tuplize
 
 
 def calculate_heuristic(matrix):
@@ -24,11 +25,14 @@ def main():
     test_cases = read_test_cases()
 
     for test_case in test_cases:
-        print("Working on ", test_cases.index(test_case))
         start = time.time()
         answer = "This puzzle is not solvable."
         queue = PriorityQueue()
         visited = set()
+
+        if len(argv) < 2 or argv[2].strip().to_lower() != "no_check=true":
+            if not has_answer(test_case):
+                print(time.time() - start, answer)
 
         """
         The queue follows the order
@@ -61,8 +65,7 @@ def main():
                                current_answer + letter
                                ))
 
-        # print(time.time() - start, answer)
-        print(answer)
+        print(time.time() - start, answer)
 
 
 if __name__ == "__main__":
