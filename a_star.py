@@ -1,9 +1,9 @@
 import time
-from sys import argv
+from sys import argv, version_info
 from queue import PriorityQueue
 
 from input import read_test_cases, MATRIX_SIZE
-from utils import calculate_permutations, check_answer, has_answer, tuplize
+from utils import calculate_permutations, check_answer, has_answer, tuplize, REQ_VERSION
 
 
 def calculate_heuristic(matrix):
@@ -22,6 +22,10 @@ def calculate_heuristic(matrix):
 
 
 def main():
+
+    if version_info < REQ_VERSION:
+        print("Python version too low! Please use", REQ_VERSION, "or later.")
+
     test_cases = read_test_cases()
 
     for test_case in test_cases:
@@ -33,6 +37,7 @@ def main():
         if len(argv) < 2 or argv[2].strip().to_lower() != "no_check=true":
             if not has_answer(test_case):
                 print(time.time() - start, answer)
+                continue
 
         """
         The queue follows the order
