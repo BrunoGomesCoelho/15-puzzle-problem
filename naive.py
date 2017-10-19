@@ -1,12 +1,16 @@
 import time
-from sys import argv
+from sys import argv, version_info
 from queue import Queue
 
 from input import read_test_cases
-from utils import calculate_permutations, check_answer, tuplize, has_answer
+from utils import calculate_permutations, check_answer, tuplize, has_answer, REQ_VERSION
 
 
 def main():
+    if version_info < REQ_VERSION:
+        print("Python version too low! Please use", REQ_VERSION, "or later.")
+        exit(1)
+
     test_cases = read_test_cases()
 
     for test_case in test_cases:
