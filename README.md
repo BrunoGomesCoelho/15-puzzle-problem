@@ -5,6 +5,15 @@
 
 Naive and A* implementation of the classic 15-puzzle in python.
 
+# Install
+
+Just git clone then unzip. 
+
+# Usage
+
+Run the version you want: "python3 naive" or "python3 a_star"
+
+If you do not want to check beforehand if there is a answer to the puzzle, use "no_check=true" after the command, for example "python3 a_star no_check=true"
 
 ## Conclusions Report
 
