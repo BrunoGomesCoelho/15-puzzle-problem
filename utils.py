@@ -1,6 +1,8 @@
 from input import MATRIX_SIZE
 from copy import deepcopy
 
+REQ_VERSION = 3.0
+
 
 def calculate_permutations(matrix):
     options = [(-1, 0, "U"), (1, 0, "D"), (0, -1, "L"), (0, 1, "R")]
