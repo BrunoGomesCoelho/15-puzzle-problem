@@ -1,7 +1,7 @@
 from input import MATRIX_SIZE
 from copy import deepcopy
 
-REQ_VERSION = 3.0
+REQ_VERSION = (3, 0)
 
 
 def calculate_permutations(matrix):
