@@ -18,6 +18,7 @@ def main():
         if len(argv) < 2 or argv[2].strip().to_lower() != "no_check=true":
             if not has_answer(test_case):
                 print(time.time() - start, answer)
+                continue
 
         queue.put((0, test_case, ""))
 
