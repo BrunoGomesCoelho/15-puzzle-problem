@@ -2,7 +2,7 @@ import mock
 import utils
 
 from input import read_matrix, read_test_cases
-import a_star
+
 
 class TestInput(object):
 
@@ -47,7 +47,7 @@ class TestUtils(object):
         array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 12, 13, 14, 0]
         assert utils.count_inversions(array) == 3
 
-    def test_count_inversions_move_normal_num(self):
+    def test_count_inversions_move_zero(self):
         # moving 0 should not count as a inversion
         array = [1, 2, 3, 4, 5, 6, 7, 0, 8, 9, 10, 11, 12, 13, 14, 15]
         assert utils.count_inversions(array) == 0
@@ -74,3 +74,7 @@ class TestUtils(object):
         matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 0, 12], [13, 14, 15, 11]]
         assert utils.has_answer(matrix) is False
 
+    def test_tuplize(self):
+        matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 0, 12], [13, 14, 15, 11]]
+        temp = utils.tuplize(matrix)
+        assert temp == (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 12, 13, 14, 15, 11)
