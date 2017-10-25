@@ -46,7 +46,7 @@ def main():
         queue.put((0, 0, test_case, ""))
 
         while not queue.empty():
-            cost, level, matrix, current_answer = queue.get()
+            _, level, matrix, current_answer = queue.get()
 
             if level > 50:
                 break
