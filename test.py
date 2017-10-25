@@ -1,4 +1,6 @@
 import mock
+
+import a_star
 import utils
 
 from input import read_matrix, read_test_cases
@@ -78,3 +80,15 @@ class TestUtils(object):
         matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 0, 12], [13, 14, 15, 11]]
         temp = utils.tuplize(matrix)
         assert temp == (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 12, 13, 14, 15, 11)
+
+
+class TestAStar(object):
+    def test_calculate_heuristic(self):
+        matrix = [
+                     [1, 2, 3, 4],
+                     [5, 6, 0, 7],
+                     [9, 10, 11, 8],
+                     [13, 14, 15, 12]
+        ]
+        # seven, eight and 12 are all 1 move away from where they should be
+        assert a_star.calculate_heuristic(matrix) == 3
