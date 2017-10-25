@@ -24,14 +24,6 @@ class TestInput(object):
 
 
 class TestUtils(object):
-    def test_check_answer_true(self):
-        ans = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
-        assert utils.check_answer(ans)
-
-    def test_check_answer_false(self):
-        not_ans = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 0, 15]]
-        assert not utils.check_answer(not_ans)
-
     def test_calculate_permutations(self):
         matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 0, 12], [13, 14, 15, 11]]
         permutations = [
@@ -42,6 +34,14 @@ class TestUtils(object):
         ]
         assert utils.calculate_permutations(matrix) == permutations
 
+    def test_check_answer_true(self):
+        ans = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
+        assert utils.check_answer(ans)
+
+    def test_check_answer_false(self):
+        not_ans = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 0, 15]]
+        assert not utils.check_answer(not_ans)
+
     def test_count_inversions_move_normal_num(self):
         # we moved "15" to the left 3 times
         array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 12, 13, 14, 0]
@@ -51,3 +51,26 @@ class TestUtils(object):
         # moving 0 should not count as a inversion
         array = [1, 2, 3, 4, 5, 6, 7, 0, 8, 9, 10, 11, 12, 13, 14, 15]
         assert utils.count_inversions(array) == 0
+
+    def test_has_answer_even_row_inversions_odd(self):
+        # 0 is on a even row [2] and there are 3 inversions (the number 11 moving to the left)
+        matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 0, 12], [13, 14, 11, 15]]
+        assert utils.has_answer(matrix) is True
+
+    def test_has_answer_odd_row_inversions_even(self):
+        # 0 is on a odd row [1] and there are 4 inversions (the number 11 moving to the left)
+        matrix = [[1, 2, 3, 4], [5, 6, 7, 0], [8, 9, 10, 12], [13, 14, 15, 11]]
+        assert utils.has_answer(matrix) is True
+
+    def test_has_answer_odd_row_inversions_odd(self):
+        # 0 is on a odd row [1] and there are 3 inversions (the number 11 moving to the left)
+        # Puzzle is not solvable
+        matrix = [[1, 2, 3, 4], [5, 6, 7, 0], [8, 9, 10, 12], [13, 14, 11, 15]]
+        assert utils.has_answer(matrix) is False
+
+    def test_has_answer_even_row_inversions_even(self):
+        # 0 is on a even row [2] and there are 4 inversions (the number 11 moving to the left)
+        # Puzzle is not solvable
+        matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 0, 12], [13, 14, 15, 11]]
+        assert utils.has_answer(matrix) is False
+
