@@ -2,7 +2,7 @@ import mock
 import utils
 
 from input import read_matrix, read_test_cases
-
+import a_star
 
 class TestInput(object):
 
@@ -41,3 +41,13 @@ class TestUtils(object):
             ([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 12, 0], [13, 14, 15, 11]], "R")
         ]
         assert utils.calculate_permutations(matrix) == permutations
+
+    def test_count_inversions_move_normal_num(self):
+        # we moved "15" to the left 3 times
+        array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 12, 13, 14, 0]
+        assert utils.count_inversions(array) == 3
+
+    def test_count_inversions_move_normal_num(self):
+        # moving 0 should not count as a inversion
+        array = [1, 2, 3, 4, 5, 6, 7, 0, 8, 9, 10, 11, 12, 13, 14, 15]
+        assert utils.count_inversions(array) == 0
