@@ -42,8 +42,7 @@ def main():
         """
         The queue follows the order
             total cost, level, matrix, answer
-        for all elements
-        """
+        for all elements """
         queue.put((0, 0, test_case, ""))
 
         while not queue.empty():
