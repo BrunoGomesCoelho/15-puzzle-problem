@@ -3,6 +3,8 @@
 
 Naive and A* implementation of the classic [15-puzzle](https://en.wikipedia.org/wiki/15_puzzle) in python. Done as part of the Advanced Algorithms class, fall 2017.
 
+# Install
+
 Just git clone then unzip. 
 
 # Usage
